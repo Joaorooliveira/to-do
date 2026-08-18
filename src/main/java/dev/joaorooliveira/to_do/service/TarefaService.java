@@ -44,6 +44,15 @@ public class TarefaService {
         tarefaRepository.delete(tarefa);
     }
 
+    @Transactional
+    public TarefaResponseDTO atualizarTarefa(Long id, TarefaRequestDTO dto) {
+        var tarefa = tarefaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
+        dto.preencher(tarefa);
+        tarefaRepository.save(tarefa);
+        return TarefaResponseDTO.fromEntity(tarefa);
+    }
+
 
 
 }
