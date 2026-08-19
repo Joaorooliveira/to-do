@@ -42,4 +42,8 @@ public class TarefaController {
         return ResponseEntity.ok(tarefaService.buscarTarefa(filtro, pageable));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<TarefaResponseDTO> buscarPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(tarefaService.buscarTarefaPorId(id));
+    }
 }
