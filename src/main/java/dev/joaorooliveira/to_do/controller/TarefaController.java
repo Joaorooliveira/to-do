@@ -1,5 +1,6 @@
 package dev.joaorooliveira.to_do.controller;
 
+import dev.joaorooliveira.to_do.dto.TarefaAtualizarDTO;
 import dev.joaorooliveira.to_do.dto.TarefaFiltroRequestDTO;
 import dev.joaorooliveira.to_do.dto.TarefaRequestDTO;
 import dev.joaorooliveira.to_do.dto.TarefaResponseDTO;
@@ -51,5 +52,12 @@ public class TarefaController {
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
         tarefaService.excluirTarefa(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TarefaResponseDTO> atualizar(@PathVariable Long id,
+                                                       @RequestBody @Valid TarefaAtualizarDTO tarefaAtualizarDTO) {
+        TarefaResponseDTO tarefaResponseDTO = tarefaService.atualizarTarefa(id, tarefaAtualizarDTO);
+        return ResponseEntity.ok(tarefaResponseDTO);
     }
 }
