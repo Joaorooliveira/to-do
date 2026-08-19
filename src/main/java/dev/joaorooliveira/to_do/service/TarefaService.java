@@ -1,5 +1,6 @@
 package dev.joaorooliveira.to_do.service;
 
+import dev.joaorooliveira.to_do.dto.TarefaAtualizarDTO;
 import dev.joaorooliveira.to_do.dto.TarefaFiltroRequestDTO;
 import dev.joaorooliveira.to_do.dto.TarefaRequestDTO;
 import dev.joaorooliveira.to_do.dto.TarefaResponseDTO;
@@ -45,7 +46,7 @@ public class TarefaService {
     }
 
     @Transactional
-    public TarefaResponseDTO atualizarTarefa(Long id, TarefaRequestDTO dto) {
+    public TarefaResponseDTO atualizarTarefa(Long id, TarefaAtualizarDTO dto) {
         var tarefa = tarefaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
         dto.preencher(tarefa);
