@@ -46,4 +46,10 @@ public class TarefaController {
     public ResponseEntity<TarefaResponseDTO> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(tarefaService.buscarTarefaPorId(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+        tarefaService.excluirTarefa(id);
+        return ResponseEntity.noContent().build();
+    }
 }
