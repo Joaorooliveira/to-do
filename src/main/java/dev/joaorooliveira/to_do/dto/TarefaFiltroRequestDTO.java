@@ -9,8 +9,8 @@ import java.time.LocalDate;
 public record TarefaFiltroRequestDTO(
         String titulo,
         String descricao,
-        TipoStatus tipoStatus,
-        TipoPrioridade tipoPrioridade,
+        TipoStatus status,
+        TipoPrioridade prioridade,
         LocalDate prazo,
         LocalDate prazoMinimo,
         LocalDate prazoMaximo

@@ -1,10 +1,12 @@
 package dev.joaorooliveira.to_do.controller;
 
+import dev.joaorooliveira.to_do.dto.TarefaFiltroRequestDTO;
 import dev.joaorooliveira.to_do.dto.TarefaRequestDTO;
 import dev.joaorooliveira.to_do.dto.TarefaResponseDTO;
 import dev.joaorooliveira.to_do.service.TarefaService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -35,6 +37,9 @@ public class TarefaController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<TarefaResponseDTO>> buscar() {}
+    public ResponseEntity<Page<TarefaResponseDTO>> buscar(
+            TarefaFiltroRequestDTO filtro, Pageable pageable) {
+        return ResponseEntity.ok(tarefaService.buscarTarefa(filtro, pageable));
+    }
 
 }

@@ -13,8 +13,8 @@ public class TarefaSpecification {
         return Specification
                 .where(nomeContem(filtro.titulo()))
                 .and(descricaoContem(filtro.descricao()))
-                .and(tipoStatusIgual(filtro.tipoStatus()))
-                .and(tipoPrioridadeIgual(filtro.tipoPrioridade()))
+                .and(tipoStatusIgual(filtro.status()))
+                .and(tipoPrioridadeIgual(filtro.prioridade()))
                 .and(prazoIgual(filtro.prazo()))
                 .and(prazoMaiorQueOuIgual(filtro.prazoMinimo()))
                 .and(prazoMenorQueOuIgual(filtro.prazoMaximo()));
@@ -43,7 +43,7 @@ public class TarefaSpecification {
             if (status == null) {
                 return null;
             }
-            return cb.equal(root.get("tipoStatus"), status);
+            return cb.equal(root.get("status"), status);
         };
     }
 
@@ -52,7 +52,7 @@ public class TarefaSpecification {
             if (prioridade == null) {
                 return null;
             }
-            return cb.equal(root.get("tipoPrioridade"), prioridade);
+            return cb.equal(root.get("prioridade"), prioridade);
         };
     }
 
