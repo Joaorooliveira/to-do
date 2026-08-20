@@ -4,12 +4,15 @@ import dev.joaorooliveira.to_do.dto.TarefaAtualizarDTO;
 import dev.joaorooliveira.to_do.dto.TarefaFiltroRequestDTO;
 import dev.joaorooliveira.to_do.dto.TarefaRequestDTO;
 import dev.joaorooliveira.to_do.dto.TarefaResponseDTO;
+import dev.joaorooliveira.to_do.projection.PrioridadeAltaProjection;
 import dev.joaorooliveira.to_do.repository.TarefaRepository;
 import dev.joaorooliveira.to_do.specification.TarefaSpecification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class TarefaService {
@@ -54,6 +57,9 @@ public class TarefaService {
         return TarefaResponseDTO.fromEntity(tarefa);
     }
 
+    public List<PrioridadeAltaProjection> listarPrioridadeAlta() {
+        return tarefaRepository.prioridadeAlta();
+    }
 
 
 }
