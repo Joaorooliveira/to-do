@@ -4,6 +4,7 @@ import dev.joaorooliveira.to_do.dto.TarefaAtualizarDTO;
 import dev.joaorooliveira.to_do.dto.TarefaFiltroRequestDTO;
 import dev.joaorooliveira.to_do.dto.TarefaRequestDTO;
 import dev.joaorooliveira.to_do.dto.TarefaResponseDTO;
+import dev.joaorooliveira.to_do.projection.PrioridadeAltaProjection;
 import dev.joaorooliveira.to_do.service.TarefaService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/tarefas")
@@ -59,5 +61,10 @@ public class TarefaController {
                                                        @RequestBody @Valid TarefaAtualizarDTO tarefaAtualizarDTO) {
         TarefaResponseDTO tarefaResponseDTO = tarefaService.atualizarTarefa(id, tarefaAtualizarDTO);
         return ResponseEntity.ok(tarefaResponseDTO);
+    }
+
+    @GetMapping("/prioridade-alta")
+    public List<PrioridadeAltaProjection> buscarPrioridadeAlta() {
+        return tarefaService.listarPrioridadeAlta();
     }
 }
